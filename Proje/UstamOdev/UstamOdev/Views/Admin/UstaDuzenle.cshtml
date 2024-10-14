@@ -1,0 +1,142 @@
+﻿@model UstamOdev.Models.ustalar
+
+@{
+    ViewBag.Title = "Usta Düzenle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+    <div align="center">
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h2 style='background:#FF6800' class="text-light">Usta Düzenle</h2>
+            <hr />
+            @Html.HiddenFor(model => model.usta_sifre, new { @Value = Model.usta_sifre })
+            @Html.HiddenFor(model => model.usta_sertifika, new { @Value = Model.usta_sertifika })
+            <div class="form-group">
+                @Html.LabelFor(model => model.usta_isim_soyisim, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.usta_isim_soyisim, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.usta_isim_soyisim, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.usta_tel, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.usta_tel, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.usta_tel, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.usta_unvan, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.usta_unvan, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.usta_unvan, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.usta_email, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.usta_email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.usta_email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.usta_onay, htmlAttributes: new { @class = "control-label col-md-5" })
+                <div class="col-md-10">
+                    @Html.DropDownList("usta_onay", new List<SelectListItem> {
+               new SelectListItem
+               {
+                   Text="Onaylı",
+                   Value="E",
+               },
+               new SelectListItem
+               {
+                   Text="Beklemede",
+                   Value="H",
+               }}, new { @class = "form-control col-md-5" })
+                    @Html.ValidationMessageFor(model => model.usta_onay, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.usta_il, htmlAttributes: new { @class = "control-label col-md-5" })
+                <div class="col-md-10">
+                    @Html.DropDownList("usta_il", new List<SelectListItem> {
+               new SelectListItem
+               {
+                   Text="Antalya",
+                   Value="Antalya",
+               },
+               new SelectListItem
+               {
+                   Text="Adana",
+                   Value="Adana",
+               },
+               new SelectListItem
+               {
+                   Text="Ankara",
+                   Value="Ankara",
+               },
+               new SelectListItem
+               {
+                   Text="Aydın",
+                   Value="Aydın",
+               },
+               new SelectListItem
+               {
+                   Text="İstanbul",
+                   Value="İstanbul",
+               },
+               new SelectListItem
+               {
+                   Text="Mersin",
+                   Value="Mersin",
+               },
+               new SelectListItem
+               {
+                   Text="Çanakkale",
+                   Value="İstanbul",
+               },
+               new SelectListItem
+               {
+                   Text="Van",
+                   Value="Van",
+               },
+               new SelectListItem
+               {
+                   Text="Batman",
+                   Value="Batman",
+               },
+               new SelectListItem
+               {
+                   Text="İzmir",
+                   Value="İzmir",
+               },
+               new SelectListItem
+               {
+                   Text="Eskişehir",
+                   Value="Eskişehir",
+               }}, new { @class = "form-control col-md-5" })
+                    @Html.ValidationMessageFor(model => model.usta_il, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <br />
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Kaydet" class="btn btn-success" />
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+    <div>
+        @Html.ActionLink("Ustalar'a Dön", "Ustalar", "Admin", new { @class = "btn btn-secondary" })
+    </div>

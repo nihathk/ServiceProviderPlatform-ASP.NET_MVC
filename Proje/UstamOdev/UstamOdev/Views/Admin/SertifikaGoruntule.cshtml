@@ -1,0 +1,26 @@
+﻿@model UstamOdev.Models.ustalar
+
+@{
+    ViewBag.Title = "SertifikaGoruntule";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+    <div align="center">
+        <br />
+        <br />
+        <br />
+        <div>
+            <h2 style='background:#FF6800' class="text-light">@Html.DisplayFor(model => model.usta_isim_soyisim) İsimli Kullanıcının Sertifikası </h2>
+            <hr />
+            <dl class="dl-horizontal">
+                <dd>
+                    <img class="card-img" src="@Url.Content(Model.usta_sertifika)" style="width: 900px; height:500px;" />
+                </dd>
+
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Bu Ustanın Bilgilerini Düzenle", "UstaDuzenle", new { id = Model.usta_id }, new { @class = "btn btn-success" })
+            @Html.ActionLink("Ustayı Sil", "UstaSil", new { id = Model.usta_id }, new { @class = "btn btn-danger" })
+        </p>
+    </div>
+@Html.ActionLink("Ustalara Dön", "Ustalar", "null", new { @class = "btn btn-secondary" })

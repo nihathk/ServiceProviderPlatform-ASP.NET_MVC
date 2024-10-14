@@ -1,0 +1,37 @@
+﻿@model UstamOdev.Models.musteriler
+
+@{
+    ViewBag.Title = "Profil";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+<br />
+<br />
+<br />
+<div align="center">
+    <h2 style='background:#FF6800' class="text-light">Profil</h2>
+    <div>
+
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.musteri_isim_soyisim)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.musteri_isim_soyisim)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.musteri_il)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.musteri_il)
+            </dd>
+
+        </dl>
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Profil Düzenle", "ProfilDuzenle", new { id = Model.musteri_id }, new { @class = "btn btn-success" })
+</p>

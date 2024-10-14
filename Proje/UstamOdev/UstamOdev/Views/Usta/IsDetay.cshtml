@@ -1,0 +1,47 @@
+﻿@model UstamOdev.Models.is_ilanlari
+
+@{
+    ViewBag.Title = "İlan Detay";
+    Layout = "~/Views/Shared/_UstaLayout.cshtml";
+}
+<br />
+<br />
+<br />
+<div align="center">
+    <h2 style='background:#FF6800' class="text-light">İlan Detaylar</h2>
+    <div>
+
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.is_tur)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.is_tur)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.is_aciklama)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.is_aciklama)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.is_ortalama_fiyat)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.is_ortalama_fiyat)
+            </dd>
+
+        </dl>
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Beklemedeki İşlere Dön", "Aktifler", "null", new { @class = "btn btn-secondary" })
+    @Html.ActionLink("Düzenle", "IsDuzenle", new { id = Model.is_id }, new { @class = "btn btn-success" })
+
+</p>

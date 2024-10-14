@@ -1,0 +1,61 @@
+﻿@model UstamOdev.Models.musteriler
+
+@{
+    ViewBag.Title = "Müsteri Profil";
+    Layout = "~/Views/Shared/_UstaLayout.cshtml";
+}
+<br />
+<br />
+<br />
+<div align="center">
+    <h2 style='background:#FF6800' class="text-light">Müşteri Profil</h2>
+    <div>
+
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.musteri_isim_soyisim)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.musteri_isim_soyisim)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.musteri_email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.musteri_email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.musteri_il)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.musteri_il)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.musteri_adres)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.musteri_adres)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.musteri_tel)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.musteri_tel)
+            </dd>
+
+        </dl>
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Beklemedeki İşlere Geri Dön", "Onaylilar", "null", new { @class = "btn btn-secondary" })
+</p>

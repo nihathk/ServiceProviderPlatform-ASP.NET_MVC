@@ -1,0 +1,56 @@
+﻿@model IEnumerable<UstamOdev.Models.musteriler>
+
+@{
+    ViewBag.Title = "Müşteriler";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<br />
+<br />
+<h2 style='background:#FF6800' class="text-light">Müşteriler</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.musteri_isim_soyisim)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.musteri_email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.musteri_tel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.musteri_adres)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.musteri_il)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.musteri_isim_soyisim)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.musteri_email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.musteri_tel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.musteri_adres)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.musteri_il)
+        </td>
+        <td>
+            @Html.ActionLink("Düzenle", "MusteriDuzenle", new { id = item.musteri_id }, new { @class = "btn btn-success" })
+            @Html.ActionLink("Sil", "MusteriSil", new { id = item.musteri_id }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

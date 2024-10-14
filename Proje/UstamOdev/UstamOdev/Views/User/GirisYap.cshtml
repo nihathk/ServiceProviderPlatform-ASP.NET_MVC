@@ -1,0 +1,50 @@
+﻿@model UstamOdev.Models.musteriler
+
+@{
+    ViewBag.Title = "Müşteri Giriş";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<br />
+<br />
+<div align="center">
+    <h2>Müşteri Giriş</h2>
+    <div class="row justify-content-md-center">
+        <div class="col-md-7">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="card" style='background:#FF6800'>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="card-body" style='background:#adadad'>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.musteri_email, htmlAttributes: new { @class = "control-label col-md-5" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.musteri_email, new { htmlAttributes = new { @class = "form-control", placeholder = "E-Posta" } })
+                                @Html.ValidationMessageFor(model => model.musteri_email, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.musteri_sifre, htmlAttributes: new { @class = "control-label col-md-5" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.musteri_sifre, new { htmlAttributes = new { @class = "form-control", placeholder = "Şifre" } })
+                                @Html.ValidationMessageFor(model => model.musteri_sifre, "", new { @class = "text-danger" })
+
+                                @if (ViewBag.error != null)
+                                {
+                                    <span class="badge badge-danger alert-danger">@ViewBag.error</span>
+                                }
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-top:1em">
+                            <input type="submit" value="Giriş Yap" class="btn btn-success" />
+                            @Html.ActionLink("Kayıt Ol", "KayıtOl", "User", new { @class = "btn btn-primary" })
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

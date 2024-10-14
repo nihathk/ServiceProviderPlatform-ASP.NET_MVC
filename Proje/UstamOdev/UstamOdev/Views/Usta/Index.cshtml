@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "Ana Sayfa";
+    Layout = "~/Views/Shared/_UstaLayout.cshtml";
+}
+<br />
+<br />
+<br />
+<div class="jumbotron">
+    <h1 class="display-4">İşlerinizi ustaca büyütmek için doğru yerdesiniz!</h1>
+    <p class="lead">Müşteri mi arıyorsunuz? Hiç vakit kaybetmeden fiyat verin. Dilediğiniz kadar müşteri bulabilirsiniz.</p>
+    <hr class="my-4">
+    <p>Yeni Fiyat verin.</p>
+    <p class="lead">
+        <a class="btn btn-success" href="@Url.Action("IsEkle", "Usta")" role="button">Fiyat Ver</a>
+    </p>
+</div>

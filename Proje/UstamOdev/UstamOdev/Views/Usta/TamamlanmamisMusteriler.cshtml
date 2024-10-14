@@ -1,0 +1,23 @@
+﻿@model IEnumerable<UstamOdev.Models.onayli_isler>
+
+@{
+    ViewBag.Title = "İşin Tamamlanmasını Bekleyen Müşteriler";
+    Layout = "~/Views/Shared/_UstaLayout.cshtml";
+}
+
+<br />
+<br />
+<br />
+<h2 style='background:#FF6800' class="text-light">İşin Tamamlanmasını Bekleyen Müşteriler</h2>
+
+@foreach (var item in Model)
+{
+    <div class="card" style="flex-direction:row; margin-bottom:1em; background:#FF6800">
+        <div class="card-body" style='background:#adadad'>
+            <h5 class="card-title">Müşteri İsmi: @item.musteriler.musteri_isim_soyisim</h5>
+            <div class="card-footer">
+                @Html.ActionLink("Profili Görüntüle", "TamamlanmamisProfil", new { musteri_id = item.musteri_id }, new { @class = "btn btn-success" })
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,43 @@
+﻿@model IEnumerable<UstamOdev.Models.is_ilanlari>
+
+@{
+    ViewBag.Title = "Onaylanmış Teklifler";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+<br />
+<br />
+<br />
+<h2 style='background:#FF6800' class="text-light">Onaylanmış Teklifler</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.is_tur)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.is_aciklama)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.is_ortalama_fiyat)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.is_tur)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.is_aciklama)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.is_ortalama_fiyat)
+            </td>
+            <td>
+                @Html.ActionLink("İşin Tamamlandığını Onayla", "TeklifOnayla", new { id = item.is_id }, new { @class = "btn btn-success" })
+            </td>
+        </tr>
+    }
+
+</table>

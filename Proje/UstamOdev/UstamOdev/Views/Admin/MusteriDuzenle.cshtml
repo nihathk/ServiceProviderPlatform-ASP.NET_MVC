@@ -1,0 +1,124 @@
+﻿@model UstamOdev.Models.musteriler
+
+@{
+    ViewBag.Title = "Müşteri Düzenle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+    <div align="center">
+        <br />
+        <h2 style='background:#FF6800' class="text-light">Müşteri Düzenle</h2>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(model => model.musteri_sifre, new { @Value = Model.musteri_sifre })
+            <div class="form-horizontal">
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.musteri_isim_soyisim, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.musteri_isim_soyisim, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.musteri_isim_soyisim, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.musteri_email, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.musteri_email, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.musteri_email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.musteri_tel, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.musteri_tel, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.musteri_tel, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.musteri_adres, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.musteri_adres, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.musteri_adres, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.musteri_il, htmlAttributes: new { @class = "control-label col-md-5" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("musteri_il", new List<SelectListItem> {
+                   new SelectListItem
+                   {
+                       Text="Antalya",
+                       Value="Antalya",
+                   },
+                   new SelectListItem
+                   {
+                       Text="Adana",
+                       Value="Adana",
+                   },
+                   new SelectListItem
+                   {
+                       Text="Ankara",
+                       Value="Ankara",
+                   },
+                   new SelectListItem
+                   {
+                       Text="Aydın",
+                       Value="Aydın",
+                   },
+                   new SelectListItem
+                   {
+                       Text="İstanbul",
+                       Value="İstanbul",
+                   },
+                   new SelectListItem
+                   {
+                       Text="Mersin",
+                       Value="Mersin",
+                   },
+                   new SelectListItem
+                   {
+                       Text="Çanakkale",
+                       Value="İstanbul",
+                   },
+                   new SelectListItem
+                   {
+                       Text="Van",
+                       Value="Van",
+                   },
+                   new SelectListItem
+                   {
+                       Text="Batman",
+                       Value="Batman",
+                   },
+                   new SelectListItem
+                   {
+                       Text="İzmir",
+                       Value="İzmir",
+                   },
+                   new SelectListItem
+                   {
+                       Text="Eskişehir",
+                       Value="Eskişehir",
+                   }}, new { @class = "form-control col-md-5" })
+                        @Html.ValidationMessageFor(model => model.musteri_il, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <br />
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Kaydet" class="btn btn-success" />
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+<div>
+    @Html.ActionLink("Müşteriler'e Dön", "Musteriler", "Admin", new { @class = "btn btn-secondary" })
+</div>

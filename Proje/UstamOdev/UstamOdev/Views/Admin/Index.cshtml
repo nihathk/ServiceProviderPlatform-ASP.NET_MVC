@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "Admin Ana Sayfa";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<br />
+<div style='background:#FF6800' class="text-light">
+    @if (Session["id"] != null)
+    {
+    <h2>Admin: @Session["id"].ToString()</h2>
+    }
+
+</div>
+
+

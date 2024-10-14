@@ -1,0 +1,88 @@
+﻿@model UstamOdev.Models.is_ilanlari
+
+@{
+    ViewBag.Title = "İlan Düzenle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<br />
+<br />
+<div align="center">
+    <h2 style='background:#FF6800' class="text-light">İlanı Düzenle</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.is_id)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.is_tur, htmlAttributes: new { @class = "control-label col-md-5" })
+                <div class="col-md-10">
+                    @Html.DropDownList("is_tur", new List<SelectListItem> {
+               new SelectListItem
+               {
+                   Text="Boya/Badana",
+                   Value="Boya/Badana",
+               },
+               new SelectListItem
+               {
+                   Text="Temizlik",
+                   Value="Temizlik",
+               },
+               new SelectListItem
+               {
+                   Text="Nakliye",
+                   Value="Nakliye",
+               },
+               new SelectListItem
+               {
+                   Text="Tamirat",
+                   Value="Tamirat",
+               },
+               new SelectListItem
+               {
+                   Text="Araç Servis",
+                   Value="Araç Servis",
+               },
+               new SelectListItem
+               {
+                   Text="Dekorasyon",
+                   Value="Dekorasyon",
+               }}, new { @class = "form-control col-md-5" })
+                    @Html.ValidationMessageFor(model => model.is_tur, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.is_aciklama, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextAreaFor(model => model.is_aciklama, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.is_aciklama, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.is_ortalama_fiyat, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.is_ortalama_fiyat, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.is_ortalama_fiyat, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <br />
+                    @Html.ActionLink("Tüm İşlere Dön", "Isler", "null", new { @class = "btn btn-secondary" })
+                    <input type="submit" value="Düzenle" class="btn btn-success" />
+                </div>
+
+
+            </div>
+        </div>
+    }
+</div>

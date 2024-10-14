@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "Ana Sayfa";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<br />
+<br />
+<br />
+
+<div class="jumbotron">
+    <h1 class="display-4">Usta bulmak için en doğru yerdesiniz!</h1>
+    <p class="lead">Usta mı arıyorsunuz? Hiç vakit kaybetmeden ilanlara göz atın. Dilediğiniz ustaya teklif verebilirsiniz.</p>
+    <hr class="my-4">
+    <p>Tüm ilanlara buradan göz atın.</p>
+    <p class="lead">
+        <a class="btn btn-success" href="@Url.Action("Isler", "User")" role="button">Tüm Ustalar</a>
+    </p>
+</div>

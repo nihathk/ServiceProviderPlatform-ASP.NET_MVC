@@ -1,0 +1,84 @@
+﻿@model UstamOdev.Models.ustalar
+
+@{
+    ViewBag.Title = "UstaSil";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<br />
+<br />
+<div align="center">
+    <h3 style='background:#FF6800' class="text-light">Bu usta profilini kaldırmak istediğinize emin misiniz?</h3>
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+
+            <dt>
+                @Html.DisplayNameFor(model => model.usta_isim_soyisim)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.usta_isim_soyisim)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.usta_tel)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.usta_tel)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.usta_sertifika)
+            </dt>
+
+            <dd>
+                <img class="card-img" src="@Url.Content(Model.usta_sertifika)" style="width: 400px; height:250px;" />
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.usta_email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.usta_email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.usta_unvan)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.usta_unvan)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.usta_onay)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.usta_onay)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.usta_il)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.usta_il)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-actions no-color">
+                @Html.ActionLink("Ustalara Dön", "Ustalar", "Admin", new { @class = "btn btn-secondary" })
+                <input type="submit" value="Kaldır" class="btn btn-danger" />
+            </div>
+        }
+    </div>
+</div>

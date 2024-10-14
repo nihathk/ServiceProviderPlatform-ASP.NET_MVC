@@ -1,0 +1,46 @@
+﻿@model UstamOdev.Models.ustalar
+
+@{
+    ViewBag.Title = "Profil";
+    Layout = "~/Views/Shared/_UstaLayout.cshtml";
+}
+<br />
+<br />
+<br />
+<div align="center">
+    <h2 style='background:#FF6800' class="text-light">Profil</h2>
+
+    <div>
+
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.usta_unvan)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.usta_unvan)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.usta_isim_soyisim)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.usta_isim_soyisim)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.usta_il)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.usta_il)
+            </dd>
+
+        </dl>
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Profil Düzenle", "ProfilDuzenle", new { id = Model.usta_id }, new { @class = "btn btn-success" })
+</p>

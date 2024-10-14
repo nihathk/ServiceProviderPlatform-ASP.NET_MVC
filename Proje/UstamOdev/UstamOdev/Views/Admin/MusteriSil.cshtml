@@ -1,0 +1,68 @@
+﻿@model UstamOdev.Models.musteriler
+
+@{
+    ViewBag.Title = "MusteriSil";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<br />
+<br />
+<div align="center">
+    <h3 style='background:#FF6800' class="text-light">Bu müşteri profilini kaldırmak istediğinize emin misiniz?</h3>
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.musteri_isim_soyisim)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.musteri_isim_soyisim)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.musteri_email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.musteri_email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.musteri_tel)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.musteri_tel)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.musteri_adres)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.musteri_adres)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.musteri_il)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.musteri_il)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                @Html.ActionLink("Müşterilere Dön", "Musteriler", "Admin", new { @class = "btn btn-secondary" })
+                <input type="submit" value="Kaldır" class="btn btn-danger" />
+            </div>
+        }
+    </div>
+</div>

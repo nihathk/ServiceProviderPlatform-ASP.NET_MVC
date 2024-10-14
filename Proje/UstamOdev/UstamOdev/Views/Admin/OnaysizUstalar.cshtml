@@ -1,0 +1,70 @@
+﻿@model IEnumerable<UstamOdev.Models.ustalar>
+
+@{
+    ViewBag.Title = "Onaysız Ustalar";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<br />
+<br />
+<h2 style='background:#FF6800' class="text-light">Onaysız Ustalar</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.usta_isim_soyisim)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.usta_tel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.usta_il)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.usta_sertifika)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.usta_email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.usta_unvan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.usta_onay)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.usta_isim_soyisim)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.usta_tel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.usta_il)
+            </td>
+            <td>
+                @Html.ActionLink("Sertifikayı Gör", "SertifikaGoruntule", new { id = item.usta_id }, new { @class = "btn btn-success" })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.usta_email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.usta_unvan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.usta_onay)
+            </td>
+            <td>
+                @Html.ActionLink("Düzenle", "UstaDuzenle", new { id = item.usta_id }, new { @class = "btn btn-success" })
+                @Html.ActionLink("Sil", "UstaSil", new { id = item.usta_id }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+
+</table>

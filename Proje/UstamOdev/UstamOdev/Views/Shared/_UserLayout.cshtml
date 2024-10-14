@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Ustam.com</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body style='background:white'>
+    <b>
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style=" background-color: #dc5a00;">
+            <div class="container-fluid">
+                @Html.ActionLink("USTAM", "Index", "User", new { area = "" }, new { @class = "navbar-brand" })
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            @Html.ActionLink("Profil", "Profil", "User", null, new { @class = "nav-link" })
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("Tüm Ustalar", "Isler", "User", null, new { @class = "nav-link" })
+                        </li>
+                        <li class="nav-item dropdown ms-auto">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Teklifler
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                @Html.ActionLink("Beklemedeki Teklifler", "Teklifler", "User", new { @class = "nav-link" }, new { @class = "dropdown-item" })
+                                @Html.ActionLink("Onaylanmış Teklifler", "Onaylilar", "User", new { @class = "nav-link" }, new { @class = "dropdown-item" })
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown ms-auto">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Kategoriler
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li>@Html.ActionLink("Boya/Badana", "Kategori", new { kategori = "Boya/Badana" }, new { @class = "dropdown-item" })</li>
+                                <li>@Html.ActionLink("Temizlik", "Kategori", new { kategori = "Temizlik" }, new { @class = "dropdown-item" })</li>
+                                <li>@Html.ActionLink("Nakliye", "Kategori", new { kategori = "Nakliye" }, new { @class = "dropdown-item" })</li>
+                                <li>@Html.ActionLink("Tamirat", "Kategori", new { kategori = "Tamirat" }, new { @class = "dropdown-item" })</li>
+                                <li>@Html.ActionLink("Araç Servis", "Kategori", new { kategori = "Araç Servis" }, new { @class = "dropdown-item" })</li>
+                                <li>@Html.ActionLink("Dekorasyon", "Kategori", new { kategori = "Dekorasyon" }, new { @class = "dropdown-item" })</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item ms-auto">
+                            <a href="@Url.Action("CikisYap", "User")" class="btn btn-danger">Çıkış Yap</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+</b>
+
+
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - ustam.com</p>
+            </footer>
+        </div>
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+</body>
+</html>

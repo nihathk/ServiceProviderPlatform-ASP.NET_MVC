@@ -1,0 +1,59 @@
+﻿@model UstamOdev.Models.onayli_isler
+
+@{
+    ViewBag.Title = "Teklif Red";
+    Layout = "~/Views/Shared/_UstaLayout.cshtml";
+}
+<br />
+<br />
+<br />
+    <div align="center">
+        <h3 style='background:#FF6800' class="text-light">Bu teklifi reddetmek istediğinizde emin misiniz?</h3>
+        <div>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.musteriler.musteri_isim_soyisim)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.musteriler.musteri_isim_soyisim)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.musteriler.musteri_il)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.musteriler.musteri_il)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.musteriler.musteri_tel)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.musteriler.musteri_tel)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.musteriler.musteri_adres)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.musteriler.musteri_adres)
+                </dd>
+
+            </dl>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    @Html.ActionLink("Beklemedeki Diğer Müşterilere Dön", "Onaylilar", "null", new { @class = "btn btn-secondary" })
+                    <input type="submit" value="Reddet" class="btn btn-danger" />
+                </div>
+            }
+        </div>
+    </div>

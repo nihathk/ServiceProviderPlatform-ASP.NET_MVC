@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="UstamOdevModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="adminler">
+    <Key>
+      <PropertyRef Name="admin_id" />
+    </Key>
+    <Property Name="admin_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="admin_email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="admin_sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="is_ilanlari">
+    <Key>
+      <PropertyRef Name="is_id" />
+    </Key>
+    <Property Name="is_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="is_tur" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="is_aciklama" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="is_ortalama_fiyat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="usta_id" Type="Int32" />
+    <NavigationProperty Name="ustalar" Relationship="Self.FK_is_ilanlari_ustalar" FromRole="is_ilanlari" ToRole="ustalar" />
+    <NavigationProperty Name="onayli_isler" Relationship="Self.FK_onayli_isler_is_ilanlari" FromRole="is_ilanlari" ToRole="onayli_isler" />
+  </EntityType>
+  <EntityType Name="musteriler">
+    <Key>
+      <PropertyRef Name="musteri_id" />
+    </Key>
+    <Property Name="musteri_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="musteri_isim_soyisim" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="musteri_email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="musteri_sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="musteri_tel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="onayli_isler" Relationship="Self.FK_onayli_isler_musteriler" FromRole="musteriler" ToRole="onayli_isler" />
+  </EntityType>
+  <EntityType Name="onayli_isler">
+    <Key>
+      <PropertyRef Name="onay_id" />
+    </Key>
+    <Property Name="onay_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="is_id" Type="Int32" />
+    <Property Name="musteri_id" Type="Int32" />
+    <Property Name="usta_id" Type="Int32" />
+    <NavigationProperty Name="is_ilanlari" Relationship="Self.FK_onayli_isler_is_ilanlari" FromRole="onayli_isler" ToRole="is_ilanlari" />
+    <NavigationProperty Name="musteriler" Relationship="Self.FK_onayli_isler_musteriler" FromRole="onayli_isler" ToRole="musteriler" />
+    <NavigationProperty Name="ustalar" Relationship="Self.FK_onayli_isler_ustalar" FromRole="onayli_isler" ToRole="ustalar" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ustalar">
+    <Key>
+      <PropertyRef Name="usta_id" />
+    </Key>
+    <Property Name="usta_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="usta_tel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="usta_sertifika" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="usta_email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="usta_sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="usta_isim_soyisim" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="usta_unvan" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="usta_onay" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="is_ilanlari" Relationship="Self.FK_is_ilanlari_ustalar" FromRole="ustalar" ToRole="is_ilanlari" />
+    <NavigationProperty Name="onayli_isler" Relationship="Self.FK_onayli_isler_ustalar" FromRole="ustalar" ToRole="onayli_isler" />
+  </EntityType>
+  <EntityType Name="kategoriler">
+    <Key>
+      <PropertyRef Name="is_tur_id" />
+    </Key>
+    <Property Name="is_tur_id" Type="Int32" Nullable="false" />
+    <Property Name="is_tur_ad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK_is_ilanlari_ustalar">
+    <End Role="ustalar" Type="Self.ustalar" Multiplicity="0..1" />
+    <End Role="is_ilanlari" Type="Self.is_ilanlari" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ustalar">
+        <PropertyRef Name="usta_id" />
+      </Principal>
+      <Dependent Role="is_ilanlari">
+        <PropertyRef Name="usta_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_onayli_isler_is_ilanlari">
+    <End Role="is_ilanlari" Type="Self.is_ilanlari" Multiplicity="0..1" />
+    <End Role="onayli_isler" Type="Self.onayli_isler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="is_ilanlari">
+        <PropertyRef Name="is_id" />
+      </Principal>
+      <Dependent Role="onayli_isler">
+        <PropertyRef Name="is_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_onayli_isler_musteriler">
+    <End Role="musteriler" Type="Self.musteriler" Multiplicity="1" />
+    <End Role="onayli_isler" Type="Self.onayli_isler" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="musteriler">
+        <PropertyRef Name="musteri_id" />
+      </Principal>
+      <Dependent Role="onayli_isler">
+        <PropertyRef Name="onay_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_onayli_isler_ustalar">
+    <End Role="ustalar" Type="Self.ustalar" Multiplicity="0..1" />
+    <End Role="onayli_isler" Type="Self.onayli_isler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ustalar">
+        <PropertyRef Name="usta_id" />
+      </Principal>
+      <Dependent Role="onayli_isler">
+        <PropertyRef Name="musteri_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="UstamOdevEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="adminler" EntityType="Self.adminler" />
+    <EntitySet Name="is_ilanlari" EntityType="Self.is_ilanlari" />
+    <EntitySet Name="musteriler" EntityType="Self.musteriler" />
+    <EntitySet Name="onayli_isler" EntityType="Self.onayli_isler" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="ustalar" EntityType="Self.ustalar" />
+    <EntitySet Name="kategoriler" EntityType="Self.kategoriler" />
+    <AssociationSet Name="FK_is_ilanlari_ustalar" Association="Self.FK_is_ilanlari_ustalar">
+      <End Role="ustalar" EntitySet="ustalar" />
+      <End Role="is_ilanlari" EntitySet="is_ilanlari" />
+    </AssociationSet>
+    <AssociationSet Name="FK_onayli_isler_is_ilanlari" Association="Self.FK_onayli_isler_is_ilanlari">
+      <End Role="is_ilanlari" EntitySet="is_ilanlari" />
+      <End Role="onayli_isler" EntitySet="onayli_isler" />
+    </AssociationSet>
+    <AssociationSet Name="FK_onayli_isler_musteriler" Association="Self.FK_onayli_isler_musteriler">
+      <End Role="musteriler" EntitySet="musteriler" />
+      <End Role="onayli_isler" EntitySet="onayli_isler" />
+    </AssociationSet>
+    <AssociationSet Name="FK_onayli_isler_ustalar" Association="Self.FK_onayli_isler_ustalar">
+      <End Role="ustalar" EntitySet="ustalar" />
+      <End Role="onayli_isler" EntitySet="onayli_isler" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(UstamOdevModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(UstamOdevModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>
